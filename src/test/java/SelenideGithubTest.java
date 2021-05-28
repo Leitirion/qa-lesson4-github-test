@@ -11,35 +11,33 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class SelenideGithubTest {
-    Random randomGenerator = new Random();
-    int i = randomGenerator.nextInt();
 
 
     @Test
 
-     void GithubTest() {
-        open("https://github.com/selenide/selenide"+"?q="+i);
-        $x("//span[text()=\"Wiki\"]").click();
-        $x("//input[@id=\"wiki-pages-filter\"]").setValue("SoftAssertions").pressEnter();
+     void githubTest() {
+        open("https://github.com/selenide/selenide");
+        $(byText("Wiki")).click();
+        $("#wiki-pages-filter").setValue("SoftAssertions").pressEnter();
         $(byText("SoftAssertions")).click();
         $("#wiki-body").shouldHave(text("Using JUnit5 extend test class:"));
 
     }
 
     @Test
-    void HerokuDragAndDropTest() {
+    void herokuDragAndDropTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
-        $x("//div[@id=\"column-a\"]").shouldHave(text("A"));
+        $("#column-a").shouldHave(text("A"));
         $("#column-b").shouldHave(text("B"));
         $("#column-a").dragAndDropTo($("#column-b"));
-        $x("//div[@id=\"column-a\"]").shouldHave(text("B"));
+        $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
     }
 
     @Test
 
 
-    void Test() {
+    void test() {
         String URL = "https://demoqa.com/automation-practice-form";
         String firstName = "firstName";
         String lastName = "lastName";
